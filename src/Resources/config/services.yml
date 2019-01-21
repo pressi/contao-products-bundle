@@ -1,0 +1,26 @@
+services:
+    _instanceof:
+        Contao\CoreBundle\Framework\FrameworkAwareInterface:
+            calls:
+                - ["setFramework", ["@contao.framework"]]
+
+        Symfony\Component\DependencyInjection\ContainerAwareInterface:
+            calls:
+                - ["setContainer", ["@service_container"]]
+
+#    prestep_bookingplan.navigation_listener:
+#        class: PRESTEP\BookingPlanBundle\EventListener\NavigationListener
+#        arguments:
+#            - "@request_stack"
+#            - "@router"
+#        tags:
+#            - { name: contao.hook, hook: getUserNavigation }
+
+#    prestep.products.dca.product:
+#        class: PRESTEP\ProductsBundle\Dca\Product
+#        public: true
+#        arguments:
+#            - "@contao.framework"
+#            - "@security.token_storage"
+#            - "@session"
+#            - "doctrine.orm.entity_manager"
