@@ -1,0 +1,1 @@
+# contao-products-bundle
