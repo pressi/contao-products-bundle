@@ -85,20 +85,20 @@ $objTable->addSubpalette('overwriteMeta', 'alt,imageTitle,imageUrl,caption');
 
 \IIDO\BasicBundle\Dca\Field::create('title')
     ->addEval('mandatory', true)
-    ->addConfig('search', true)
-    ->addConfig('sorting', true)
-    ->addConfig('flag', 1)
+//    ->addConfig('search', true)
+//    ->addConfig('sorting', true)
+//    ->addConfig('flag', 1)
     ->addToTable( $objTable );
 
 \IIDO\BasicBundle\Dca\Field::create('alias', 'alias')->addToTable( $objTable );
 
 \IIDO\BasicBundle\Dca\Field::create('subheadline')
-    ->addConfig('search', true)
+//    ->addConfig('search', true)
     ->addToTable( $objTable );
 
 \IIDO\BasicBundle\Dca\Field::create('text', 'textarea')->addToTable( $objTable );
 
-$objTable->addImageFields();
+//$objTable->addImageFields();
 //$objTable->addEnclosureFields();
 
 \IIDO\BasicBundle\Dca\Field::create('cssClass')->addToTable( $objTable );
