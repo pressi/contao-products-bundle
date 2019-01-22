@@ -1,7 +1,7 @@
 {
     "name"          : "prestep/contao-products-bundle",
     "type"          : "contao-bundle",
-    "description"   : "Contao 4 PRESTEP Booking Plan Bundle",
+    "description"   : "Contao 4 PRESTEP Products Bundle",
     "homepage"      : "http://www.prestep.at",
     "license"       : "MIT",
     "authors"       :
