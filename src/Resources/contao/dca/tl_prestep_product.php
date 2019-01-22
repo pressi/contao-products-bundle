@@ -14,7 +14,7 @@
  */
 System::loadLanguageFile('tl_content');
 
-$strTableName   = \IIDO\BasicBundle\Config\BundleConfig::getFileTable( __FILE__ );
+$strTableName   = 'tl_prestep_product'; //\IIDO\BasicBundle\Config\BundleConfig::getFileTable( __FILE__ );
 $tableListener  = 'prestep.products.dca.product';
 
 $objTable       = new \IIDO\BasicBundle\Dca\Table( $strTableName, false, true );
@@ -32,14 +32,14 @@ $objTable->addTableConfig('switchToEdit', true);
 $objTable->addTableConfig('enableVersioning', true);
 $objTable->addTableConfig('enableVersioning', true);
 
-$objTable->addTableConfig('onload_callback', array($tableListener,'checkPermission'));
+//$objTable->addTableConfig('onload_callback', array($tableListener,'checkPermission'));
 
-$objTable->addTableConfig('oncut_callback', array($tableListener,'scheduleUpdate'));
+//$objTable->addTableConfig('oncut_callback', array($tableListener,'scheduleUpdate'));
 
-$objTable->addTableConfig('ondelete_callback', array($tableListener,'scheduleUpdate'));
+//$objTable->addTableConfig('ondelete_callback', array($tableListener,'scheduleUpdate'));
 
-$objTable->addTableConfig('onsubmit_callback', array($tableListener,'adjustTime'));
-$objTable->addTableConfig('onsubmit_callback', array($tableListener,'scheduleUpdate'));
+//$objTable->addTableConfig('onsubmit_callback', array($tableListener,'adjustTime'));
+//$objTable->addTableConfig('onsubmit_callback', array($tableListener,'scheduleUpdate'));
 
 
 
@@ -51,11 +51,11 @@ $objTable->addSorting(4, array(
     'fields'                  => array('title DESC'),
     'headerFields'            => array('title', 'tstamp'),
     'panelLayout'             => 'filter;sort,search,limit',
-    'child_record_callback'   => array($tableListener, 'listProductArticles'),
+//    'child_record_callback'   => array($tableListener, 'listProductArticles'),
     'child_record_class'      => 'no_padding'
 ));
 
-$objTable->addGlobalOperations(true);
+$objTable->addGlobalOperations();
 
 $objTable->addOperations('edit,editHeader,copy,cut,delete,toggle,feature,show');
 
