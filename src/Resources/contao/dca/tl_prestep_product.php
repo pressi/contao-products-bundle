@@ -96,7 +96,7 @@ $objTable->addSubpalette('overwriteMeta', 'alt,imageTitle,imageUrl,caption');
     ->addConfig('search', true)
     ->addToTable( $objTable );
 
-\IIDO\BasicBundle\Dca\Field::create('text', 'textarea');
+\IIDO\BasicBundle\Dca\Field::create('text', 'textarea')->addToTable( $objTable );
 
 $objTable->addImageFields();
 //$objTable->addEnclosureFields();
