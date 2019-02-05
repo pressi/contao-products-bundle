@@ -78,7 +78,7 @@ $GLOBALS['TL_DCA']['tl_prestep_products_archive'] = array
 			'edit' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_prestep_products_archive']['edit'],
-				'href'                => 'table=tl_news',
+				'href'                => 'table=tl_prestep_product',
 				'icon'                => 'edit.svg'
 			),
 			'editheader' => array

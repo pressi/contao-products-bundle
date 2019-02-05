@@ -1,810 +1,70 @@
 <?php
+/*******************************************************************
+ *
+ * (c) 2019 Stephan Preßl, www.prestep.at <development@prestep.at>
+ * All rights reserved
+ *
+ * Modification, distribution or any other action on or with
+ * this file is permitted unless explicitly granted by IIDO
+ * www.iido.at <development@iido.at>
+ *
+ *******************************************************************/
 
-/**
- * Contao Open Source CMS
- *
- * Copyright (c) 2005-2017 Leo Feyer
- *
- * @license LGPL-3.0+
- */
-//
-//
-///**
-// * Load tl_content language file
-// */
-//System::loadLanguageFile('tl_content');
-//
-//$strTableName   = 'tl_prestep_product'; //\IIDO\BasicBundle\Config\BundleConfig::getFileTable( __FILE__ );
-////$tableListener  = 'prestep.products.dca.product';
-//$tableListener  = $strTableName;
-//
-//$objTable       = new \IIDO\BasicBundle\Dca\Table( $strTableName, false, true );
-//
-//
-//
-///**
-// * Table Config
-// */
-//
-//$objTable->addTableConfig('ptable', 'tl_prestep_products_archive');
-////$objTable->addTableConfig('ctable', array('tl_article'));
-//
-//$objTable->addTableConfig('switchToEdit', true);
-//$objTable->addTableConfig('enableVersioning', true);
-//$objTable->addTableConfig('markAsCopy', 'title');
-//
-////$objTable->addTableConfig('onload_callback', array($tableListener,'checkPermission'));
-//
-////$objTable->addTableConfig('oncut_callback', array($tableListener,'scheduleUpdate'));
-//
-////$objTable->addTableConfig('ondelete_callback', array($tableListener,'scheduleUpdate'));
-//
-////$objTable->addTableConfig('onsubmit_callback', array($tableListener,'adjustTime'));
-////$objTable->addTableConfig('onsubmit_callback', array($tableListener,'scheduleUpdate'));
-//
-//
-//
-///**
-// * Table List
-// */
-//
-//$objTable->addSorting(4, array
-//(
-//    'fields'                => array('title DESC'),
-//    'headerFields'          => array('title', 'tstamp'),
-//    'panelLayout'           => 'filter;sort,search,limit',
-//    'childRecordCallback'   => array($tableListener, 'listProductArticles'),
-//    'childRecordClass'      => 'no_padding'
-//));
-//
-//$objTable->addGlobalOperations();
-//
-//$objTable->addOperations('edit,editHeader,copy,cut,delete,toggle,show');
-//
-//
-//
-///**
-// * Palettes
-// */
-//
-//$objTable->addPalette('default', '{title_legend},title,alias;{text_legend},subheadline,text;{image_legend},addImage;{enclosure_legend:hide},addEnclosure;{expert_legend:hide},cssClass;');
-//
-//
-//
-///**
-// * Subpalettes
-// */
-//
-////$objTable->addSubpalette('addImage', 'singleSRC,size,floating,imagemargin,fullsize,overwriteMeta');
-////$objTable->addSubpalette('addEnclosure', 'enclosure');
-////$objTable->addSubpalette('overwriteMeta', 'alt,imageTitle,imageUrl,caption');
-//
-//
-//
-///**
-// * Fields
-// */
-//
-//\IIDO\BasicBundle\Dca\Field::create('title')
-//    ->addEval('mandatory', true)
-////    ->addConfig('search', true)
-////    ->addConfig('sorting', true)
-////    ->addConfig('flag', 1)
-//    ->addToTable( $objTable );
-//
-////\IIDO\BasicBundle\Dca\Field::create('alias', 'alias')->addToTable( $objTable );
-//
-//\IIDO\BasicBundle\Dca\Field::create('subheadline')
-////    ->addConfig('search', true)
-//    ->addToTable( $objTable );
-//
-//\IIDO\BasicBundle\Dca\Field::create('text', 'textarea')->addToTable( $objTable );
-//
-////$objTable->addImageFields();
-////$objTable->addEnclosureFields();
-//
-//\IIDO\BasicBundle\Dca\Field::create('cssClass')->addToTable( $objTable );
-//
-//
-//$objTable->createDca();
-////echo "<pre>";
-////print_r( $GLOBALS['TL_DCA'][ $strTableName ] );
-////exit;
-///**
-// * Table tl_prestep_product
-// */
-////$GLOBALS['TL_DCA']['tl_prestep_product'] = array
-////(
-////
-////
-////	// Fields
-////	'fields' => array
-////	(
-////
-////
-////
-////
-////
-////
-////
-////		'addEnclosure' => array
-////		(
-////			'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['addEnclosure'],
-////			'exclude'                 => true,
-////			'inputType'               => 'checkbox',
-////			'eval'                    => array('submitOnChange'=>true),
-////			'sql'                     => "char(1) NOT NULL default ''"
-////		),
-////		'enclosure' => array
-////		(
-////			'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['enclosure'],
-////			'exclude'                 => true,
-////			'inputType'               => 'fileTree',
-////			'eval'                    => array('multiple'=>true, 'fieldType'=>'checkbox', 'filesOnly'=>true, 'isDownloads'=>true, 'extensions'=>Config::get('allowedDownload'), 'mandatory'=>true),
-////			'sql'                     => "blob NULL"
-////		),
-////
-////
-////	)
-////);
-//
-//
-///**
-// * Provide miscellaneous methods that are used by the data configuration array.
-// *
-// * @property Contao\News $News
-// *
-// * @author Leo Feyer <https://github.com/leofeyer>
-// */
-//class tl_prestep_product extends Backend
+//if( Input::get("do") === "prestepProducts" )
 //{
+////    $objTable->addTableConfig('ptable', 'tl_prestep_product');
+////    $objTable->addTableConfig('ctable', array('tl_content'));
 //
-//	/**
-//	 * Import the back end user object
-//	 */
-//	public function __construct()
-//	{
-//		parent::__construct();
-//		$this->import('BackendUser', 'User');
-//	}
+//    $GLOBALS['TL_DCA']['tl_article']['config']['ptable'] = 'tl_prestep_product';
+//    $GLOBALS['TL_DCA']['tl_article']['config']['ctable'] = 'tl_content';
 //
-//
-////	/**
-////	 * Check permissions to edit table tl_prestep_product
-////	 *
-////	 * @throws Contao\CoreBundle\Exception\AccessDeniedException
-////	 */
-////	public function checkPermission()
-////	{
-////		$bundles = System::getContainer()->getParameter('kernel.bundles');
-////
-////		// HOOK: comments extension required
-////		if (!isset($bundles['ContaoCommentsBundle']))
-////		{
-////			$key = array_search('allowComments', $GLOBALS['TL_DCA']['tl_prestep_product']['list']['sorting']['headerFields']);
-////			unset($GLOBALS['TL_DCA']['tl_prestep_product']['list']['sorting']['headerFields'][$key]);
-////		}
-////
-////		if ($this->User->isAdmin)
-////		{
-////			return;
-////		}
-////
-////		// Set the root IDs
-////		if (!\is_array($this->User->news) || empty($this->User->news))
-////		{
-////			$root = array(0);
-////		}
-////		else
-////		{
-////			$root = $this->User->news;
-////		}
-////
-////		$id = \strlen(Input::get('id')) ? Input::get('id') : CURRENT_ID;
-////
-////		// Check current action
-////		switch (Input::get('act'))
-////		{
-////			case 'paste':
-////				// Allow
-////				break;
-////
-////			case 'create':
-////				if (!\strlen(Input::get('pid')) || !\in_array(Input::get('pid'), $root))
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to create news items in news archive ID ' . Input::get('pid') . '.');
-////				}
-////				break;
-////
-////			case 'cut':
-////			case 'copy':
-////				if (!\in_array(Input::get('pid'), $root))
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Input::get('act') . ' news item ID ' . $id . ' to news archive ID ' . Input::get('pid') . '.');
-////				}
-////				// NO BREAK STATEMENT HERE
-////
-////			case 'edit':
-////			case 'show':
-////			case 'delete':
-////			case 'toggle':
-////			case 'feature':
-////				$objArchive = $this->Database->prepare("SELECT pid FROM tl_prestep_product WHERE id=?")
-////											 ->limit(1)
-////											 ->execute($id);
-////
-////				if ($objArchive->numRows < 1)
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid news item ID ' . $id . '.');
-////				}
-////
-////				if (!\in_array($objArchive->pid, $root))
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to ' . Input::get('act') . ' news item ID ' . $id . ' of news archive ID ' . $objArchive->pid . '.');
-////				}
-////				break;
-////
-////			case 'select':
-////			case 'editAll':
-////			case 'deleteAll':
-////			case 'overrideAll':
-////			case 'cutAll':
-////			case 'copyAll':
-////				if (!\in_array($id, $root))
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access news archive ID ' . $id . '.');
-////				}
-////
-////				$objArchive = $this->Database->prepare("SELECT id FROM tl_prestep_product WHERE pid=?")
-////											 ->execute($id);
-////
-////				if ($objArchive->numRows < 1)
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid news archive ID ' . $id . '.');
-////				}
-////
-////				/** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
-////				$objSession = System::getContainer()->get('session');
-////
-////				$session = $objSession->all();
-////				$session['CURRENT']['IDS'] = array_intersect($session['CURRENT']['IDS'], $objArchive->fetchEach('id'));
-////				$objSession->replace($session);
-////				break;
-////
-////			default:
-////				if (\strlen(Input::get('act')))
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Invalid command "' . Input::get('act') . '".');
-////				}
-////				elseif (!\in_array($id, $root))
-////				{
-////					throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access news archive ID ' . $id . '.');
-////				}
-////				break;
-////		}
-////	}
-////
-////
-////	/**
-////	 * Auto-generate the news alias if it has not been set yet
-////	 *
-////	 * @param mixed         $varValue
-////	 * @param DataContainer $dc
-////	 *
-////	 * @return string
-////	 *
-////	 * @throws Exception
-////	 */
-////	public function generateAlias($varValue, DataContainer $dc)
-////	{
-////		$autoAlias = false;
-////
-////		// Generate alias if there is none
-////		if ($varValue == '')
-////		{
-////			$autoAlias = true;
-////			$varValue = StringUtil::generateAlias($dc->activeRecord->headline);
-////		}
-////
-////		$objAlias = $this->Database->prepare("SELECT id FROM tl_prestep_product WHERE alias=? AND id!=?")
-////								   ->execute($varValue, $dc->id);
-////
-////		// Check whether the news alias exists
-////		if ($objAlias->numRows)
-////		{
-////			if (!$autoAlias)
-////			{
-////				throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['aliasExists'], $varValue));
-////			}
-////
-////			$varValue .= '-' . $dc->id;
-////		}
-////
-////		return $varValue;
-////	}
-////
-////
-////	/**
-////	 * Set the timestamp to 00:00:00 (see #26)
-////	 *
-////	 * @param integer $value
-////	 *
-////	 * @return integer
-////	 */
-////	public function loadDate($value)
-////	{
-////		return strtotime(date('Y-m-d', $value) . ' 00:00:00');
-////	}
-////
-////
-////	/**
-////	 * Set the timestamp to 1970-01-01 (see #26)
-////	 *
-////	 * @param integer $value
-////	 *
-////	 * @return integer
-////	 */
-////	public function loadTime($value)
-////	{
-////		return strtotime('1970-01-01 ' . date('H:i:s', $value));
-////	}
-////
-////
-//	/**
-//	 * List a news article
-//	 *
-//	 * @param array $arrRow
-//	 *
-//	 * @return string
-//	 */
-//	public function listProductArticles($arrRow)
-//	{
-//		return '<div class="tl_content_left">' . $arrRow['title'] . '</div>';
-//	}
+//    unset( $GLOBALS['TL_DCA']['tl_article']['config']['onload_callback'] );
+//    unset( $GLOBALS['TL_DCA']['tl_article']['list']['global_operations']['toggleNodes'] );
+//    unset( $GLOBALS['TL_DCA']['tl_article']['select'] );
 //
 //
-////	/**
-////	 * Get all articles and return them as array
-////	 *
-////	 * @param DataContainer $dc
-////	 *
-////	 * @return array
-////	 */
-////	public function getArticleAlias(DataContainer $dc)
-////	{
-////		$arrPids = array();
-////		$arrAlias = array();
-////
-////		if (!$this->User->isAdmin)
-////		{
-////			foreach ($this->User->pagemounts as $id)
-////			{
-////				$arrPids[] = $id;
-////				$arrPids = array_merge($arrPids, $this->Database->getChildRecords($id, 'tl_page'));
-////			}
-////
-////			if (empty($arrPids))
-////			{
-////				return $arrAlias;
-////			}
-////
-////			$objAlias = $this->Database->prepare("SELECT a.id, a.title, a.inColumn, p.title AS parent FROM tl_article a LEFT JOIN tl_page p ON p.id=a.pid WHERE a.pid IN(". implode(',', array_map('intval', array_unique($arrPids))) .") ORDER BY parent, a.sorting")
-////									   ->execute($dc->id);
-////		}
-////		else
-////		{
-////			$objAlias = $this->Database->prepare("SELECT a.id, a.title, a.inColumn, p.title AS parent FROM tl_article a LEFT JOIN tl_page p ON p.id=a.pid ORDER BY parent, a.sorting")
-////									   ->execute($dc->id);
-////		}
-////
-////		if ($objAlias->numRows)
-////		{
-////			System::loadLanguageFile('tl_article');
-////
-////			while ($objAlias->next())
-////			{
-////				$arrAlias[$objAlias->parent][$objAlias->id] = $objAlias->title . ' (' . ($GLOBALS['TL_LANG']['COLS'][$objAlias->inColumn] ?: $objAlias->inColumn) . ', ID ' . $objAlias->id . ')';
-////			}
-////		}
-////
-////		return $arrAlias;
-////	}
-////
-////
-////	/**
-////	 * Add the source options depending on the allowed fields (see #5498)
-////	 *
-////	 * @param DataContainer $dc
-////	 *
-////	 * @return array
-////	 */
-////	public function getSourceOptions(DataContainer $dc)
-////	{
-////		if ($this->User->isAdmin)
-////		{
-////			return array('default', 'internal', 'article', 'external');
-////		}
-////
-////		$arrOptions = array('default');
-////
-////		// Add the "internal" option
-////		if ($this->User->hasAccess('tl_prestep_product::jumpTo', 'alexf'))
-////		{
-////			$arrOptions[] = 'internal';
-////		}
-////
-////		// Add the "article" option
-////		if ($this->User->hasAccess('tl_prestep_product::articleId', 'alexf'))
-////		{
-////			$arrOptions[] = 'article';
-////		}
-////
-////		// Add the "external" option
-////		if ($this->User->hasAccess('tl_prestep_product::url', 'alexf'))
-////		{
-////			$arrOptions[] = 'external';
-////		}
-////
-////		// Add the option currently set
-////		if ($dc->activeRecord && $dc->activeRecord->source != '')
-////		{
-////			$arrOptions[] = $dc->activeRecord->source;
-////			$arrOptions = array_unique($arrOptions);
-////		}
-////
-////		return $arrOptions;
-////	}
-////
-////
-////	/**
-////	 * Adjust start end end time of the event based on date, span, startTime and endTime
-////	 *
-////	 * @param DataContainer $dc
-////	 */
-////	public function adjustTime(DataContainer $dc)
-////	{
-////		// Return if there is no active record (override all)
-////		if (!$dc->activeRecord)
-////		{
-////			return;
-////		}
-////
-////		$arrSet['date'] = strtotime(date('Y-m-d', $dc->activeRecord->date) . ' ' . date('H:i:s', $dc->activeRecord->time));
-////		$arrSet['time'] = $arrSet['date'];
-////
-////		$this->Database->prepare("UPDATE tl_prestep_product %s WHERE id=?")->set($arrSet)->execute($dc->id);
-////	}
-////
-////
-////	/**
-////	 * Check for modified news feeds and update the XML files if necessary
-////	 */
-////	public function generateFeed()
-////	{
-////		/** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
-////		$objSession = System::getContainer()->get('session');
-////
-////		$session = $objSession->get('news_feed_updater');
-////
-////		if (!\is_array($session) || empty($session))
-////		{
-////			return;
-////		}
-////
-////		$this->import('News');
-////
-////		foreach ($session as $id)
-////		{
-////			$this->News->generateFeedsByArchive($id);
-////		}
-////
-////		$this->import('Automator');
-////		$this->Automator->generateSitemap();
-////
-////		$objSession->set('news_feed_updater', null);
-////	}
-////
-////
-////	/**
-////	 * Schedule a news feed update
-////	 *
-////	 * This method is triggered when a single news item or multiple news
-////	 * items are modified (edit/editAll), moved (cut/cutAll) or deleted
-////	 * (delete/deleteAll). Since duplicated items are unpublished by default,
-////	 * it is not necessary to schedule updates on copyAll as well.
-////	 *
-////	 * @param DataContainer $dc
-////	 */
-////	public function scheduleUpdate(DataContainer $dc)
-////	{
-////		// Return if there is no ID
-////		if (!$dc->activeRecord || !$dc->activeRecord->pid || Input::get('act') == 'copy')
-////		{
-////			return;
-////		}
-////
-////		/** @var Symfony\Component\HttpFoundation\Session\SessionInterface $objSession */
-////		$objSession = System::getContainer()->get('session');
-////
-////		// Store the ID in the session
-////		$session = $objSession->get('news_feed_updater');
-////		$session[] = $dc->activeRecord->pid;
-////		$objSession->set('news_feed_updater', array_unique($session));
-////	}
-////
-////
-////	/**
-////	 * Return the "feature/unfeature element" button
-////	 *
-////	 * @param array  $row
-////	 * @param string $href
-////	 * @param string $label
-////	 * @param string $title
-////	 * @param string $icon
-////	 * @param string $attributes
-////	 *
-////	 * @return string
-////	 */
-////	public function iconFeatured($row, $href, $label, $title, $icon, $attributes)
-////	{
-////		if (\strlen(Input::get('fid')))
-////		{
-////			$this->toggleFeatured(Input::get('fid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
-////			$this->redirect($this->getReferer());
-////		}
-////
-////		// Check permissions AFTER checking the fid, so hacking attempts are logged
-////		if (!$this->User->hasAccess('tl_prestep_product::featured', 'alexf'))
-////		{
-////			return '';
-////		}
-////
-////		$href .= '&amp;fid='.$row['id'].'&amp;state='.($row['featured'] ? '' : 1);
-////
-////		if (!$row['featured'])
-////		{
-////			$icon = 'featured_.svg';
-////		}
-////
-////		return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['featured'] ? 1 : 0) . '"').'</a> ';
-////	}
-////
-////
-////	/**
-////	 * Feature/unfeature a news item
-////	 *
-////	 * @param integer       $intId
-////	 * @param boolean       $blnVisible
-////	 * @param DataContainer $dc
-////	 *
-////	 * @throws Contao\CoreBundle\Exception\AccessDeniedException
-////	 */
-////	public function toggleFeatured($intId, $blnVisible, DataContainer $dc=null)
-////	{
-////		// Check permissions to edit
-////		Input::setGet('id', $intId);
-////		Input::setGet('act', 'feature');
-////		$this->checkPermission();
-////
-////		// Check permissions to feature
-////		if (!$this->User->hasAccess('tl_prestep_product::featured', 'alexf'))
-////		{
-////			throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to feature/unfeature news item ID ' . $intId . '.');
-////		}
-////
-////		$objVersions = new Versions('tl_prestep_product', $intId);
-////		$objVersions->initialize();
-////
-////		// Trigger the save_callback
-////		if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['featured']['save_callback']))
-////		{
-////			foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['featured']['save_callback'] as $callback)
-////			{
-////				if (\is_array($callback))
-////				{
-////					$this->import($callback[0]);
-////					$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
-////				}
-////				elseif (\is_callable($callback))
-////				{
-////					$blnVisible = $callback($blnVisible, $this);
-////				}
-////			}
-////		}
-////
-////		// Update the database
-////		$this->Database->prepare("UPDATE tl_prestep_product SET tstamp=". time() .", featured='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
-////					   ->execute($intId);
-////
-////		$objVersions->create();
-////	}
-////
-////
-////	/**
-////	 * Return the "toggle visibility" button
-////	 *
-////	 * @param array  $row
-////	 * @param string $href
-////	 * @param string $label
-////	 * @param string $title
-////	 * @param string $icon
-////	 * @param string $attributes
-////	 *
-////	 * @return string
-////	 */
-////	public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
-////	{
-////		if (\strlen(Input::get('tid')))
-////		{
-////			$this->toggleVisibility(Input::get('tid'), (Input::get('state') == 1), (@func_get_arg(12) ?: null));
-////			$this->redirect($this->getReferer());
-////		}
-////
-////		// Check permissions AFTER checking the tid, so hacking attempts are logged
-////		if (!$this->User->hasAccess('tl_prestep_product::published', 'alexf'))
-////		{
-////			return '';
-////		}
-////
-////		$href .= '&amp;tid='.$row['id'].'&amp;state='.($row['published'] ? '' : 1);
-////
-////		if (!$row['published'])
-////		{
-////			$icon = 'invisible.svg';
-////		}
-////
-////		return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['published'] ? 1 : 0) . '"').'</a> ';
-////	}
-////
-////
-////	/**
-////	 * Disable/enable a user group
-////	 *
-////	 * @param integer       $intId
-////	 * @param boolean       $blnVisible
-////	 * @param DataContainer $dc
-////	 */
-////	public function toggleVisibility($intId, $blnVisible, DataContainer $dc=null)
-////	{
-////		// Set the ID and action
-////		Input::setGet('id', $intId);
-////		Input::setGet('act', 'toggle');
-////
-////		if ($dc)
-////		{
-////			$dc->id = $intId; // see #8043
-////		}
-////
-////		// Trigger the onload_callback
-////		if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onload_callback']))
-////		{
-////			foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onload_callback'] as $callback)
-////			{
-////				if (\is_array($callback))
-////				{
-////					$this->import($callback[0]);
-////					$this->{$callback[0]}->{$callback[1]}($dc);
-////				}
-////				elseif (\is_callable($callback))
-////				{
-////					$callback($dc);
-////				}
-////			}
-////		}
-////
-////		// Check the field access
-////		if (!$this->User->hasAccess('tl_prestep_product::published', 'alexf'))
-////		{
-////			throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to publish/unpublish news item ID ' . $intId . '.');
-////		}
-////
-////		// Set the current record
-////		if ($dc)
-////		{
-////			$objRow = $this->Database->prepare("SELECT * FROM tl_prestep_product WHERE id=?")
-////									 ->limit(1)
-////									 ->execute($intId);
-////
-////			if ($objRow->numRows)
-////			{
-////				$dc->activeRecord = $objRow;
-////			}
-////		}
-////
-////		$objVersions = new Versions('tl_prestep_product', $intId);
-////		$objVersions->initialize();
-////
-////		// Trigger the save_callback
-////		if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['published']['save_callback']))
-////		{
-////			foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['published']['save_callback'] as $callback)
-////			{
-////				if (\is_array($callback))
-////				{
-////					$this->import($callback[0]);
-////					$blnVisible = $this->{$callback[0]}->{$callback[1]}($blnVisible, $dc);
-////				}
-////				elseif (\is_callable($callback))
-////				{
-////					$blnVisible = $callback($blnVisible, $dc);
-////				}
-////			}
-////		}
-////
-////		$time = time();
-////
-////		// Update the database
-////		$this->Database->prepare("UPDATE tl_prestep_product SET tstamp=$time, published='" . ($blnVisible ? '1' : '') . "' WHERE id=?")
-////					   ->execute($intId);
-////
-////		if ($dc)
-////		{
-////			$dc->activeRecord->tstamp = $time;
-////			$dc->activeRecord->published = ($blnVisible ? '1' : '');
-////		}
-////
-////		// Trigger the onsubmit_callback
-////		if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onsubmit_callback']))
-////		{
-////			foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onsubmit_callback'] as $callback)
-////			{
-////				if (\is_array($callback))
-////				{
-////					$this->import($callback[0]);
-////					$this->{$callback[0]}->{$callback[1]}($dc);
-////				}
-////				elseif (\is_callable($callback))
-////				{
-////					$callback($dc);
-////				}
-////			}
-////		}
-////
-////		$objVersions->create();
-////	}
+//    $GLOBALS['TL_DCA']['tl_article']['list']['sorting'] = array();
+//
+//    $GLOBALS['TL_DCA']['tl_article']['list']['sorting']['mode']     = 4;
+//    $GLOBALS['TL_DCA']['tl_article']['list']['sorting']['fields']   = array('sorting');
+//    $GLOBALS['TL_DCA']['tl_article']['list']['sorting']['headerFields']   = array('headline');
+//
+//
+//    $GLOBALS['TL_DCA']['tl_article']['fields']['pid']['foreignKey'] = 'tl_prestep_product.headline';
 //}
 
 
-
-/*
- * This file is part of Contao.
- *
- * (c) Leo Feyer
- *
- * @license LGPL-3.0-or-later
- */
-
 System::loadLanguageFile('tl_content');
 
-$GLOBALS['TL_DCA']['tl_prestep_product'] = array
+$GLOBALS['TL_DCA']['tl_prestep_product_article'] = array
 (
 
     // Config
     'config' => array
     (
         'dataContainer'               => 'Table',
-        'ptable'                      => 'tl_prestep_products_archive',
-        'ctable'                      => array('tl_prestep_product_article'),
+        'ptable'                      => 'tl_prestep_product',
+        'ctable'                      => array('tl_content'),
         'switchToEdit'                => true,
         'enableVersioning'            => true,
         'markAsCopy'                  => 'headline',
         'onload_callback' => array
         (
-//            array('tl_prestep_product', 'checkPermission'),
-//            array('tl_prestep_product', 'generateFeed')
+//            array('tl_prestep_product_article', 'checkPermission'),
+//            array('tl_prestep_product_article', 'generateFeed')
         ),
         'oncut_callback' => array
         (
-//            array('tl_prestep_product', 'scheduleUpdate')
+//            array('tl_prestep_product_article', 'scheduleUpdate')
         ),
         'ondelete_callback' => array
         (
-//            array('tl_prestep_product', 'scheduleUpdate')
+//            array('tl_prestep_product_article', 'scheduleUpdate')
         ),
         'onsubmit_callback' => array
         (
-//            array('tl_prestep_product', 'adjustTime'),
-//            array('tl_prestep_product', 'scheduleUpdate')
+//            array('tl_prestep_product_article', 'adjustTime'),
+//            array('tl_prestep_product_article', 'scheduleUpdate')
         ),
         'sql' => array
         (
@@ -824,9 +84,9 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         (
             'mode'                    => 4,
             'fields'                  => array('date DESC'),
-            'headerFields'            => array('title', 'jumpTo', 'tstamp', 'protected', 'allowComments'),
+            'headerFields'            => array('headline', 'tstamp'),
             'panelLayout'             => 'filter;sort,search,limit',
-            'child_record_callback'   => array('tl_prestep_product', 'listNewsArticles'),
+            'child_record_callback'   => array('tl_prestep_product_article', 'listNewsArticles'),
             'child_record_class'      => 'no_padding'
         ),
         'global_operations' => array
@@ -843,53 +103,53 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         (
             'edit' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['edit'],
-                'href'                => 'table=tl_prestep_product_article',
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['edit'],
+                'href'                => 'table=tl_content',
                 'icon'                => 'edit.svg'
             ),
             'editheader' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['editmeta'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['editmeta'],
                 'href'                => 'act=edit',
                 'icon'                => 'header.svg'
             ),
             'copy' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['copy'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['copy'],
                 'href'                => 'act=paste&amp;mode=copy',
                 'icon'                => 'copy.svg'
             ),
             'cut' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['cut'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['cut'],
                 'href'                => 'act=paste&amp;mode=cut',
                 'icon'                => 'cut.svg'
             ),
             'delete' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['delete'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['delete'],
                 'href'                => 'act=delete',
                 'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if(!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\'))return false;Backend.getScrollOffset()"'
             ),
             'toggle' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['toggle'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['toggle'],
                 'icon'                => 'visible.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleVisibility(this,%s)"',
-                'button_callback'     => array('tl_prestep_product', 'toggleIcon'),
+                'button_callback'     => array('tl_prestep_product_article', 'toggleIcon'),
                 'showInHeader'        => true
             ),
             'feature' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['feature'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['feature'],
                 'icon'                => 'featured.svg',
                 'attributes'          => 'onclick="Backend.getScrollOffset();return AjaxRequest.toggleFeatured(this,%s)"',
-                'button_callback'     => array('tl_prestep_product', 'iconFeatured')
+                'button_callback'     => array('tl_prestep_product_article', 'iconFeatured')
             ),
             'show' => array
             (
-                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product']['show'],
+                'label'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['show'],
                 'href'                => 'act=show',
                 'icon'                => 'show.svg'
             )
@@ -923,7 +183,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'pid' => array
         (
-            'foreignKey'              => 'tl_prestep_product_archive.title',
+            'foreignKey'              => 'tl_prestep_product.headline',
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('type'=>'belongsTo', 'load'=>'lazy')
         ),
@@ -933,7 +193,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'headline' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['headline'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['headline'],
             'exclude'                 => true,
             'search'                  => true,
             'sorting'                 => true,
@@ -944,20 +204,20 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'alias' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['alias'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['alias'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'alias', 'doNotCopy'=>true, 'unique'=>true, 'maxlength'=>128, 'tl_class'=>'w50 clr'),
             'save_callback' => array
             (
-                array('tl_prestep_product', 'generateAlias')
+                array('tl_prestep_product_article', 'generateAlias')
             ),
             'sql'                     => "varchar(128) BINARY NOT NULL default ''"
         ),
         'author' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['author'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['author'],
             'default'                 => BackendUser::getInstance()->id,
             'exclude'                 => true,
             'search'                  => true,
@@ -972,7 +232,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'date' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['date'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['date'],
             'default'                 => time(),
             'exclude'                 => true,
             'filter'                  => true,
@@ -982,26 +242,26 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
             'eval'                    => array('rgxp'=>'date', 'mandatory'=>true, 'doNotCopy'=>true, 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
             'load_callback' => array
             (
-                array('tl_prestep_product', 'loadDate')
+                array('tl_prestep_product_article', 'loadDate')
             ),
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
         'time' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['time'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['time'],
             'default'                 => time(),
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'time', 'mandatory'=>true, 'doNotCopy'=>true, 'tl_class'=>'w50'),
             'load_callback' => array
             (
-                array('tl_prestep_product', 'loadTime')
+                array('tl_prestep_product_article', 'loadTime')
             ),
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
         ),
         'subheadline' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['subheadline'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['subheadline'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'text',
@@ -1010,7 +270,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'teaser' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['teaser'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['teaser'],
             'exclude'                 => true,
             'search'                  => true,
             'inputType'               => 'textarea',
@@ -1019,7 +279,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'addImage' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['addImage'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['addImage'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('submitOnChange'=>true),
@@ -1120,7 +380,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'addEnclosure' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['addEnclosure'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['addEnclosure'],
             'exclude'                 => true,
             'inputType'               => 'checkbox',
             'eval'                    => array('submitOnChange'=>true),
@@ -1128,7 +388,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'enclosure' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['enclosure'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['enclosure'],
             'exclude'                 => true,
             'inputType'               => 'fileTree',
             'eval'                    => array('multiple'=>true, 'fieldType'=>'checkbox', 'filesOnly'=>true, 'isDownloads'=>true, 'extensions'=>Config::get('allowedDownload'), 'mandatory'=>true, 'orderField'=>'orderEnclosure'),
@@ -1141,19 +401,19 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'source' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['source'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['source'],
             'default'                 => 'default',
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'radio',
-            'options_callback'        => array('tl_prestep_product', 'getSourceOptions'),
-            'reference'               => &$GLOBALS['TL_LANG']['tl_prestep_product'],
+            'options_callback'        => array('tl_prestep_product_article', 'getSourceOptions'),
+            'reference'               => &$GLOBALS['TL_LANG']['tl_prestep_product_article'],
             'eval'                    => array('submitOnChange'=>true, 'helpwizard'=>true),
             'sql'                     => "varchar(12) NOT NULL default ''"
         ),
         'jumpTo' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['jumpTo'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['jumpTo'],
             'exclude'                 => true,
             'inputType'               => 'pageTree',
             'foreignKey'              => 'tl_page.title',
@@ -1163,10 +423,10 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'articleId' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['articleId'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['articleId'],
             'exclude'                 => true,
             'inputType'               => 'select',
-            'options_callback'        => array('tl_prestep_product', 'getArticleAlias'),
+            'options_callback'        => array('tl_prestep_product_article', 'getArticleAlias'),
             'eval'                    => array('chosen'=>true, 'mandatory'=>true, 'tl_class'=>'w50'),
             'sql'                     => "int(10) unsigned NOT NULL default '0'",
             'relation'                => array('table'=>'tl_article', 'type'=>'hasOne', 'load'=>'lazy'),
@@ -1190,7 +450,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'cssClass' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['cssClass'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['cssClass'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('tl_class'=>'w50'),
@@ -1198,7 +458,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'noComments' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['noComments'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['noComments'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -1207,7 +467,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'featured' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['featured'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['featured'],
             'exclude'                 => true,
             'filter'                  => true,
             'inputType'               => 'checkbox',
@@ -1216,7 +476,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'published' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['published'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['published'],
             'exclude'                 => true,
             'filter'                  => true,
             'flag'                    => 1,
@@ -1226,7 +486,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'start' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['start'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['start'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
@@ -1234,7 +494,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
         ),
         'stop' => array
         (
-            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product']['stop'],
+            'label'                   => &$GLOBALS['TL_LANG']['tl_prestep_product_article']['stop'],
             'exclude'                 => true,
             'inputType'               => 'text',
             'eval'                    => array('rgxp'=>'datim', 'datepicker'=>true, 'tl_class'=>'w50 wizard'),
@@ -1250,7 +510,7 @@ $GLOBALS['TL_DCA']['tl_prestep_product'] = array
  *
  * @author Leo Feyer <https://github.com/leofeyer>
  */
-class tl_prestep_product extends Backend
+class tl_prestep_product_article extends Backend
 {
 
     /**
@@ -1263,7 +523,7 @@ class tl_prestep_product extends Backend
     }
 
     /**
-     * Check permissions to edit table tl_prestep_product
+     * Check permissions to edit table tl_prestep_product_article
      *
      * @throws Contao\CoreBundle\Exception\AccessDeniedException
      */
@@ -1274,8 +534,8 @@ class tl_prestep_product extends Backend
         // HOOK: comments extension required
         if (!isset($bundles['ContaoCommentsBundle']))
         {
-            $key = array_search('allowComments', $GLOBALS['TL_DCA']['tl_prestep_product']['list']['sorting']['headerFields']);
-            unset($GLOBALS['TL_DCA']['tl_prestep_product']['list']['sorting']['headerFields'][$key]);
+            $key = array_search('allowComments', $GLOBALS['TL_DCA']['tl_prestep_product_article']['list']['sorting']['headerFields']);
+            unset($GLOBALS['TL_DCA']['tl_prestep_product_article']['list']['sorting']['headerFields'][$key]);
         }
 
         if ($this->User->isAdmin)
@@ -1317,7 +577,7 @@ class tl_prestep_product extends Backend
             case 'copy':
                 if (Input::get('act') == 'cut' && Input::get('mode') == 1)
                 {
-                    $objArchive = $this->Database->prepare("SELECT pid FROM tl_prestep_product WHERE id=?")
+                    $objArchive = $this->Database->prepare("SELECT pid FROM tl_prestep_product_article WHERE id=?")
                         ->limit(1)
                         ->execute(Input::get('pid'));
 
@@ -1344,7 +604,7 @@ class tl_prestep_product extends Backend
             case 'delete':
             case 'toggle':
             case 'feature':
-                $objArchive = $this->Database->prepare("SELECT pid FROM tl_prestep_product WHERE id=?")
+                $objArchive = $this->Database->prepare("SELECT pid FROM tl_prestep_product_article WHERE id=?")
                     ->limit(1)
                     ->execute($id);
 
@@ -1369,7 +629,7 @@ class tl_prestep_product extends Backend
                     throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to access news archive ID ' . $id . '.');
                 }
 
-                $objArchive = $this->Database->prepare("SELECT id FROM tl_prestep_product WHERE pid=?")
+                $objArchive = $this->Database->prepare("SELECT id FROM tl_prestep_product_article WHERE pid=?")
                     ->execute($id);
 
                 if ($objArchive->numRows < 1)
@@ -1433,7 +693,7 @@ class tl_prestep_product extends Backend
             }
         }
 
-        $objAlias = $this->Database->prepare("SELECT id FROM tl_prestep_product WHERE alias=? AND id!=?")
+        $objAlias = $this->Database->prepare("SELECT id FROM tl_prestep_product_article WHERE alias=? AND id!=?")
             ->execute($varValue, $dc->id);
 
         // Check whether the news alias exists
@@ -1550,19 +810,19 @@ class tl_prestep_product extends Backend
         $arrOptions = array('default');
 
         // Add the "internal" option
-        if ($this->User->hasAccess('tl_prestep_product::jumpTo', 'alexf'))
+        if ($this->User->hasAccess('tl_prestep_product_article::jumpTo', 'alexf'))
         {
             $arrOptions[] = 'internal';
         }
 
         // Add the "article" option
-        if ($this->User->hasAccess('tl_prestep_product::articleId', 'alexf'))
+        if ($this->User->hasAccess('tl_prestep_product_article::articleId', 'alexf'))
         {
             $arrOptions[] = 'article';
         }
 
         // Add the "external" option
-        if ($this->User->hasAccess('tl_prestep_product::url', 'alexf'))
+        if ($this->User->hasAccess('tl_prestep_product_article::url', 'alexf'))
         {
             $arrOptions[] = 'external';
         }
@@ -1593,7 +853,7 @@ class tl_prestep_product extends Backend
         $arrSet['date'] = strtotime(date('Y-m-d', $dc->activeRecord->date) . ' ' . date('H:i:s', $dc->activeRecord->time));
         $arrSet['time'] = $arrSet['date'];
 
-        $this->Database->prepare("UPDATE tl_prestep_product %s WHERE id=?")->set($arrSet)->execute($dc->id);
+        $this->Database->prepare("UPDATE tl_prestep_product_article %s WHERE id=?")->set($arrSet)->execute($dc->id);
     }
 
     /**
@@ -1672,7 +932,7 @@ class tl_prestep_product extends Backend
         }
 
         // Check permissions AFTER checking the fid, so hacking attempts are logged
-        if (!$this->User->hasAccess('tl_prestep_product::featured', 'alexf'))
+        if (!$this->User->hasAccess('tl_prestep_product_article::featured', 'alexf'))
         {
             return '';
         }
@@ -1704,18 +964,18 @@ class tl_prestep_product extends Backend
         $this->checkPermission();
 
         // Check permissions to feature
-        if (!$this->User->hasAccess('tl_prestep_product::featured', 'alexf'))
+        if (!$this->User->hasAccess('tl_prestep_product_article::featured', 'alexf'))
         {
             throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to feature/unfeature news item ID ' . $intId . '.');
         }
 
-        $objVersions = new Versions('tl_prestep_product', $intId);
+        $objVersions = new Versions('tl_prestep_product_article', $intId);
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['featured']['save_callback']))
+        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product_article']['fields']['featured']['save_callback']))
         {
-            foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['featured']['save_callback'] as $callback)
+            foreach ($GLOBALS['TL_DCA']['tl_prestep_product_article']['fields']['featured']['save_callback'] as $callback)
             {
                 if (\is_array($callback))
                 {
@@ -1730,7 +990,7 @@ class tl_prestep_product extends Backend
         }
 
         // Update the database
-        $this->Database->prepare("UPDATE tl_prestep_product SET tstamp=". time() .", featured='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+        $this->Database->prepare("UPDATE tl_prestep_product_article SET tstamp=". time() .", featured='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
             ->execute($intId);
 
         $objVersions->create();
@@ -1757,7 +1017,7 @@ class tl_prestep_product extends Backend
         }
 
         // Check permissions AFTER checking the tid, so hacking attempts are logged
-        if (!$this->User->hasAccess('tl_prestep_product::published', 'alexf'))
+        if (!$this->User->hasAccess('tl_prestep_product_article::published', 'alexf'))
         {
             return '';
         }
@@ -1791,9 +1051,9 @@ class tl_prestep_product extends Backend
         }
 
         // Trigger the onload_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onload_callback']))
+        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product_article']['config']['onload_callback']))
         {
-            foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onload_callback'] as $callback)
+            foreach ($GLOBALS['TL_DCA']['tl_prestep_product_article']['config']['onload_callback'] as $callback)
             {
                 if (\is_array($callback))
                 {
@@ -1808,7 +1068,7 @@ class tl_prestep_product extends Backend
         }
 
         // Check the field access
-        if (!$this->User->hasAccess('tl_prestep_product::published', 'alexf'))
+        if (!$this->User->hasAccess('tl_prestep_product_article::published', 'alexf'))
         {
             throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions to publish/unpublish news item ID ' . $intId . '.');
         }
@@ -1816,7 +1076,7 @@ class tl_prestep_product extends Backend
         // Set the current record
         if ($dc)
         {
-            $objRow = $this->Database->prepare("SELECT * FROM tl_prestep_product WHERE id=?")
+            $objRow = $this->Database->prepare("SELECT * FROM tl_prestep_product_article WHERE id=?")
                 ->limit(1)
                 ->execute($intId);
 
@@ -1826,13 +1086,13 @@ class tl_prestep_product extends Backend
             }
         }
 
-        $objVersions = new Versions('tl_prestep_product', $intId);
+        $objVersions = new Versions('tl_prestep_product_article', $intId);
         $objVersions->initialize();
 
         // Trigger the save_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['published']['save_callback']))
+        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product_article']['fields']['published']['save_callback']))
         {
-            foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['fields']['published']['save_callback'] as $callback)
+            foreach ($GLOBALS['TL_DCA']['tl_prestep_product_article']['fields']['published']['save_callback'] as $callback)
             {
                 if (\is_array($callback))
                 {
@@ -1849,7 +1109,7 @@ class tl_prestep_product extends Backend
         $time = time();
 
         // Update the database
-        $this->Database->prepare("UPDATE tl_prestep_product SET tstamp=$time, published='" . ($blnVisible ? '1' : '') . "' WHERE id=?")
+        $this->Database->prepare("UPDATE tl_prestep_product_article SET tstamp=$time, published='" . ($blnVisible ? '1' : '') . "' WHERE id=?")
             ->execute($intId);
 
         if ($dc)
@@ -1859,9 +1119,9 @@ class tl_prestep_product extends Backend
         }
 
         // Trigger the onsubmit_callback
-        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onsubmit_callback']))
+        if (\is_array($GLOBALS['TL_DCA']['tl_prestep_product_article']['config']['onsubmit_callback']))
         {
-            foreach ($GLOBALS['TL_DCA']['tl_prestep_product']['config']['onsubmit_callback'] as $callback)
+            foreach ($GLOBALS['TL_DCA']['tl_prestep_product_article']['config']['onsubmit_callback'] as $callback)
             {
                 if (\is_array($callback))
                 {
