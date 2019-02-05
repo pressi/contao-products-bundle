@@ -10,7 +10,7 @@
 namespace PRESTEP\ProductsBundle\ContaoManager;
 
 
-use PRESTEP\BookingPlanBundle\PRESTEPBookingPlanBundle;
+use PRESTEP\ProductsBundle\PRESTEPProductsBundle;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 
@@ -44,7 +44,7 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface, ConfigPlu
         $arrLoadAfter   = [ContaoCoreBundle::class];
 
         return [
-            BundleConfig::create(PRESTEPBookingPlanBundle::class)
+            BundleConfig::create(PRESTEPProductsBundle::class)
                 ->setLoadAfter($arrLoadAfter)
         ];
     }
