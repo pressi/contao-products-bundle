@@ -10,7 +10,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="PRESTEP Booking Plan Bundle">
+        <testsuite name="PRESTEP Products Bundle">
             <directory>./tests</directory>
         </testsuite>
     </testsuites>

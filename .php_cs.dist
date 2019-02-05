@@ -1,6 +1,6 @@
 <?php
 $header = <<<EOF
-This file is part of [PRESTEP Booking Plan Bundle].
+This file is part of [PRESTEP Products Bundle].
 (c) Stephan Preßl
 @license MIT
 EOF;
