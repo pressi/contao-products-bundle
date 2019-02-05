@@ -10,7 +10,7 @@
 namespace PRESTEP\ProductsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use PRESTEP\ProductsBundle\DependencyInjection\PRESTEPBookingPlanExtension;
+use PRESTEP\ProductsBundle\DependencyInjection\PRESTEPProductsExtension;
 
 
 /**
